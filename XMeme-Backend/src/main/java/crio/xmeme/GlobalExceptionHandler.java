@@ -20,13 +20,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MemeAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     public String handleMemeAlreadyExistsException(MemeAlreadyExistsException e) {
-        return e.getMessage();
+        return "{\"message\": \"" + e.getMessage() + "\" }";
     }
 
     @ExceptionHandler(MemeNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleMemeNotFoundException(MemeNotFoundException e) {
-        return e.getMessage();
+        return "{\"message\": \"" + e.getMessage() + "\" }";
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
@@ -36,13 +36,13 @@ public class GlobalExceptionHandler {
                                     .stream()
                                     .map(ConstraintViolation::getMessageTemplate)
                                     .collect(Collectors.toList());
-        return joinWithNewLine(violations);
+        return "{\"message\": \"" + joinWithNewLine(violations) + "\" }";
     }
 
     @ExceptionHandler(MemeConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String handleMemeConstraintViolationException(MemeConstraintViolationException e) {
-        return joinWithNewLine(e.getViolations());
+        return "{\"message\": \"" + joinWithNewLine(e.getViolations()) + "\" }";
     }
 
     private String joinWithNewLine(Collection<String> e) {

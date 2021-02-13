@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>XMeme - A Meme posting platform</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+	<script src="resources/js/jquery.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/memeposter.js"></script>
+</head>
+<body class="bg-light">
+	<div class="navbar navbar-light flex-column">
+        <h2 class="nav-item font-weight-bold mr-auto mt-1 ml-5">CWoD Phase 2B - XMeme</h2>
+        <p class="nav-item mr-auto ml-5">Post a meme, show your creativity 😎</p>
+    </div>
+    <div class="container-fluid w-100">
+    	<div class="row mr-0 ml-0">
+    		<div class="col-sm-8 card-columns">
+    			
+    		</div>
+    		<div class="col-sm-4 card p-0">
+				<h4 class="card-header card-title w-100">Post your meme</h4>
+				<form class="card-body">
+					<div class="form-group row mr-auto">
+						<label for="name" class="col-sm-4 col-form-label">Name</label>
+						<input type="text" class="col form-control" id="name" required>
+					</div>
+					<div class="form-group row mr-auto">
+						<label for="caption" class="col-sm-4 col-form-label">Caption</label>
+  						<input type="text" class="col form-control" id="caption" required>
+					</div>
+					<div class="form-group row mr-auto">
+						<label for="url" class="col-sm-4 col-form-label">Image URL</label>
+  						<input type="url" class="col form-control" id="url" required>
+					</div>
+					<div class="row" hidden id = "postalert"></div>
+					<button type="submit" onclick="postMeme()" class="btn btn-primary w-100" id="submitButton">Post</button>
+				</form>
+    		</div>
+    	</div>	
+    </div>
+</body>
+</html>
