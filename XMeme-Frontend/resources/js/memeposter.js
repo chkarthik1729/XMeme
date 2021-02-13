@@ -1,4 +1,4 @@
-const apiURL = "http://localhost:8081";
+const apiURL = "http://localhost:8081/memes/";
 
 async function postMeme() {
 	var submitButton = document.getElementById("submitButton");
@@ -10,7 +10,7 @@ async function postMeme() {
 	var url = document.getElementById("url").value;
 	var postAlert = document.getElementById("postalert");
 
-	const response = await postRequest(apiURL + "/memes/", {
+	const response = await postRequest(apiURL, {
 		name: name,
 		caption: caption,
 		url: url
