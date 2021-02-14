@@ -1,1 +1,1 @@
-sleep 40
+sleep 60
