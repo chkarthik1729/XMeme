@@ -1,18 +1,13 @@
 # Install Docker
 
-# curl -fsSL https://get.docker.com -o get-docker.sh
+curl -fsSL https://get.docker.com -o get-docker.sh
 
-# chmod +x ./get-docker.sh
+chmod +x ./get-docker.sh
 
-# ./get-docker.sh
+./get-docker.sh
 
-# Install MySQL
 
-apt-get update -y
-
-apt-get install mysql-client mysql-server -y
-
-mysql -uroot -proot -e "CREATE DATABASE xmeme;"
+docker run --name mysqldb -p 3306:3306 -e MYSQL_USER=root -e MYSQL_PASSWORD=root -e MYSQL_DATABASE=xmeme -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:latest
 
 # Maven Installation
 
