@@ -1,39 +1,28 @@
-# MySQL Installation -> https://gist.github.com/sheikhwaqas/9088872
+# Install Docker
 
-# Download and Install the Latest Updates for the OS
-apt-get update && apt-get upgrade -y
+# curl -fsSL https://get.docker.com -o get-docker.sh
 
-# Set the Server Timezone to CST
-echo "America/Chicago" > /etc/timezone
-dpkg-reconfigure -f noninteractive tzdata
+# chmod +x ./get-docker.sh
 
-# Enable Ubuntu Firewall and allow SSH & MySQL Ports
-ufw enable
-ufw allow 22
-ufw allow 3306
+# ./get-docker.sh
 
-# Install essential packages
-apt-get -y install zsh htop
-
-# Install MySQL Server in a Non-Interactive mode. Default root password will be "root"
-echo "mysql-server-5.6 mysql-server/root_password password root" | sudo debconf-set-selections
-echo "mysql-server-5.6 mysql-server/root_password_again password root" | sudo debconf-set-selections
-apt-get -y install mysql-server-5.6
-
-
-# Run the MySQL Secure Installation wizard
-mysql_secure_installation
-
-sed -i 's/127\.0\.0\.1/0\.0\.0\.0/g' /etc/mysql/my.cnf
-mysql -uroot -p -e 'USE mysql; UPDATE `user` SET `Host`="%" WHERE `User`="root" AND `Host`="localhost"; DELETE FROM `user` WHERE `Host` != "%" AND `User`="root"; FLUSH PRIVILEGES;'
-
-service mysql restart
-
+# Install MySQL
+apt-get install mysql-client mysql-server -y
 
 # Maven Installation
 
-sudo apt install maven
+sudo apt install maven -y
 
 # Java installation
 
-sudo apt install default-jdk
+sudo apt install default-jdk -y
+
+
+# Currently in root folder of the project
+cd XMeme-Backend
+
+mvn clean install
+
+cp target/XMeme-0.0.1-SNAPSHOT.jar XMeme.jar
+
+cd ../
