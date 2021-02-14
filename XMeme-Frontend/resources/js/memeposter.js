@@ -1,4 +1,4 @@
-const apiURL = "http://52.14.129.64:8081/memes/";
+const apiURL = "http://localhost:8081/memes/";
 
 async function postMeme() {
 	var submitButton = document.getElementById("submitButton");

@@ -16,6 +16,12 @@ async function loadNextPage() {
 	});
 }
 
+window.addEventListener('scroll', () => {
+	if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+		loadNextPage();
+	}
+})
+
 function addCard(item) {
 	var card = getNewCard();
 	card.querySelector(".id").innerHTML = item.id;
