@@ -7,15 +7,18 @@
 # ./get-docker.sh
 
 # Install MySQL
+
+apt-get update -y
+
 apt-get install mysql-client mysql-server -y
 
 # Maven Installation
 
-sudo apt install maven -y
+apt install maven -y
 
 # Java installation
 
-sudo apt install default-jdk -y
+apt install default-jdk -y
 
 
 # Currently in root folder of the project
