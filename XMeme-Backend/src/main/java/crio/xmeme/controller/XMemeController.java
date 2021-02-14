@@ -12,35 +12,35 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping(value = "/memes", produces = "application/json")
+@RequestMapping(value = "", produces = "application/json")
 public class XMemeController {
 
     @Autowired
     MemeService memeService;
 
-    @PostMapping("/")
+    @PostMapping("/memes")
     public String submitMeme(@RequestBody @Valid Meme meme) {
         return String.format("{\"id\" : %d}", memeService.saveMeme(meme));
     }
 
-    @GetMapping("/")
+    @GetMapping("/memes")
     public List<Meme> getMemes(
             @RequestParam(required = false, defaultValue = "0") @Min(0) int page,
             @RequestParam(required = false, defaultValue = "100") @Min(1) int pageSize) {
         return memeService.getMemes(page, pageSize);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/memes/{id}")
     public Meme getMeme(@PathVariable @Min(1) int id) {
         return memeService.getMeme(id);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/memes/{id}")
     public void updateMeme(@PathVariable @Min(1) int id, @RequestBody Meme updatedMeme) {
         memeService.updateMeme(id, updatedMeme);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/memes/{id}")
     public void deleteMeme(@PathVariable @Min(1) int id) {
         memeService.deleteMeme(id);
     }
