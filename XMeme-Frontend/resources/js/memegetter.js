@@ -31,8 +31,8 @@ function getNewCard() {
 	card.innerHTML = 
 		"<div class\"card-body\">"
 	  + "<div class =\"id\" hidden></div>"
-	  + "<h3 class=\"name card-title\"></h3>"
-	  + "<p class=\"caption card-text\"></p>"
+	  + "<h3 class=\"name card-title ml-3 mt-2\"></h3>"
+	  + "<p class=\"caption card-text ml-3\"></p>"
 	  + "<img class=\"image card-img\">"
 	  + "</div>";
 	return card;
