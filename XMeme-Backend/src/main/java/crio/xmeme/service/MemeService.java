@@ -21,6 +21,8 @@ public class MemeService {
     private final Pattern urlPattern = Pattern.compile("(http|https):\\/\\/(www)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)");
 
     public int saveMeme(Meme meme) {
+        if (meme.getName() != null && meme.getName().trim().equals(""))
+            throw new MemeConstraintViolationException(List.of("Name cannot be null"));
         ensureURLMatchesPattern(meme);
         ensureMemeDoesNotAlreadyExist(meme);
         meme.setCreatedAt(System.currentTimeMillis());
@@ -53,6 +55,7 @@ public class MemeService {
         oldMeme.setLastUpdatedAt(System.currentTimeMillis());
         if (updatedMeme.getCaption() != null) oldMeme.setCaption(updatedMeme.getCaption());
         if (updatedMeme.getUrl() != null) oldMeme.setUrl(updatedMeme.getUrl());
+        saveMeme(oldMeme);
     }
 
     private void ensureMemeDoesNotAlreadyExist(Meme meme) {

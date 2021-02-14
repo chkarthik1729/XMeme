@@ -18,7 +18,6 @@ public class Meme {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private int id;
 
-    @NotBlank
     private String name;
 
     @NotBlank

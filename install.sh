@@ -12,6 +12,8 @@ apt-get update -y
 
 apt-get install mysql-client mysql-server -y
 
+mysql -uroot -proot -e "CREATE DATABASE xmeme;"
+
 # Maven Installation
 
 apt install maven -y
